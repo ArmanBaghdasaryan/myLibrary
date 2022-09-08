@@ -24,7 +24,7 @@ import java.io.IOException;
 )
 public class AddAuthorServlet extends HttpServlet {
     private AuthorManager authorManager = new AuthorManager();
-    private static final String IMAGE_PATH = "C:\\Users\\DELL\\javaLibraryImages\\";
+    private static final String IMAGE_PATH = "\\C:\\Users\\DELL\\javaLibraryImages\\";
 
 
     @Override
@@ -39,7 +39,7 @@ public class AddAuthorServlet extends HttpServlet {
         String surname = req.getParameter("surname");
         String email = req.getParameter("email");
         int age = Integer.parseInt(req.getParameter("age"));
-        Part profilePicPart = req.getPart("authorPic");
+        Part profilePicPart = req.getPart("profilePic");
         String fileName = null;
         if (profilePicPart != null) {
 
@@ -55,7 +55,7 @@ public class AddAuthorServlet extends HttpServlet {
                 .surname(surname)
                 .email(email)
                 .age(age)
-                .authorPic(fileName)
+                .profilePic(fileName)
                 .build();
 
         authorManager.add(author);

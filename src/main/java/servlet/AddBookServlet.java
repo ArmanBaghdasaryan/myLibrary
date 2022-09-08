@@ -27,7 +27,7 @@ import java.util.List;
 public class AddBookServlet extends HttpServlet {
     private BookManager bookManager = new BookManager();
     private AuthorManager authorManager = new AuthorManager();
-    private static final String IMAGE_PATH = "C:\\Users\\DELL\\javaLibraryImages\\";
+    private static final String IMAGE_PATH = "\\C:\\Users\\DELL\\javaLibraryImages\\";
 
 
     @Override
@@ -45,7 +45,7 @@ public class AddBookServlet extends HttpServlet {
         String description = req.getParameter("description");
         double price = Double.parseDouble(req.getParameter("price"));
         int authorId = Integer.parseInt(req.getParameter("authorId"));
-        Part profilePicPart = req.getPart("bookPic");
+        Part profilePicPart = req.getPart("profilePic");
         String fileName = null;
         if (profilePicPart != null) {
 
@@ -61,7 +61,7 @@ public class AddBookServlet extends HttpServlet {
                 .description(description)
                 .price(price)
                 .author(authorManager.getById(authorId))
-                .bookPic(fileName)
+                .profilePic(fileName)
                 .build();
 
         bookManager.add(book);

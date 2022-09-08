@@ -37,6 +37,7 @@
 
         <a href="/users/add">Register</a>
         <a href="/login">Login</a>
+<%--        <a href="/users">users</a>--%>
 
         <%}%>
 

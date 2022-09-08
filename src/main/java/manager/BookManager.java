@@ -14,14 +14,14 @@ public class BookManager {
     AuthorManager authorManager = new AuthorManager();
 
     public void add(Book book) {
-        String sql = "insert into book(title,description,price,author_id,book_pic) VALUES (?,?,?,?,?)";
+        String sql = "insert into book(title,description,price,author_id,profile_pic) VALUES (?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, book.getTitle());
             ps.setString(2, book.getDescription());
             ps.setDouble(3, book.getPrice());
             ps.setInt(4, book.getAuthor().getId());
-            ps.setString(5, book.getBookPic());
+            ps.setString(5, book.getProfilePic());
 
             ps.executeUpdate();
             ResultSet resultSet = ps.getGeneratedKeys();
@@ -85,13 +85,13 @@ public class BookManager {
         int authorId = resultSet.getInt("author_id");
         Author author = authorManager.getById(authorId);
         book.setAuthor(author);
-        book.setBookPic(resultSet.getString("book_pic"));
+        book.setProfilePic(resultSet.getString("profile_pic"));
 
         return book;
     }
 
     public void edit(Book book) {
-        String sql = "update book set title = ?,description = ?,price = ?,author_id = ?,book_pic = ? where id = ?";
+        String sql = "update book set title = ?,description = ?,price = ?,author_id = ?,profile_pic = ? where id = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, book.getTitle());
@@ -99,7 +99,7 @@ public class BookManager {
             ps.setDouble(3, book.getPrice());
             ps.setInt(4, book.getAuthor().getId());
             ps.setInt(5, book.getId());
-            ps.setString(6, book.getBookPic());
+            ps.setString(6, book.getProfilePic());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

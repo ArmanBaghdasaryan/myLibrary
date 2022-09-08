@@ -34,10 +34,10 @@
     <tr>
         <td>
             <%
-                if (author.getAuthorPic() == null || author.getAuthorPic().length() == 0) {%>
+                if (author.getProfilePic() == null || author.getProfilePic().length() == 0) {%>
             <img src="/image/defaultPic.png" width="100"/>
             <%} else {%>
-            <img src="/getImage?profilePic=<%=author.getAuthorPic()%> " width="100"/>
+            <img src="/getImage?profilePic=<%=author.getProfilePic()%> " width="100"/>
             <%}%>
         </td>
         <td><%=author.getId()%>

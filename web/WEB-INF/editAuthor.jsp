@@ -19,6 +19,7 @@
 Please update author's data:
 <form action="/author/edit" method="post">
     <input type="hidden" name="authorId" value="<%=author.getId()%>"/>
+    <input type="file" name="profilePic" value="<%=author.getProfilePic()%>"/>
     <input type="text" name="name" value="<%=author.getName()%>"/><br>
     <input type="text" name="surname" value="<%=author.getSurname()%>"/><br>
     <input type="email" name="email" value="<%=author.getEmail()%>"/><br>

@@ -10,6 +10,13 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/book/edit")
+@MultipartConfig(
+
+        fileSizeThreshold = 1024 * 1024 * 10,
+        maxFileSize = 1024 * 1024 * 10,
+        maxRequestSize = 1024 * 1024 * 100
+
+)
 public class BookEditServlet extends HttpServlet {
     private BookManager bookManager = new BookManager();
     private AuthorManager authorManager = new AuthorManager();
@@ -30,6 +37,7 @@ public class BookEditServlet extends HttpServlet {
         String description = req.getParameter("description");
         double price = Double.parseDouble(req.getParameter("price"));
         int authorId = Integer.parseInt(req.getParameter("authorId"));
+        String profilePic = req.getParameter("profilePic");
 
 
         Book book = Book.builder()
@@ -38,6 +46,7 @@ public class BookEditServlet extends HttpServlet {
                 .description(description)
                 .price(price)
                 .author(authorManager.getById(authorId))
+                .profilePic(profilePic)
                 .build();
 
         bookManager.edit(book);

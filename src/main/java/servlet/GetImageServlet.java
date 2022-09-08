@@ -12,7 +12,12 @@ import java.io.OutputStream;
 
 @WebServlet(urlPatterns = "/getImage")
 public class GetImageServlet extends HttpServlet {
-    private static final String IMAGE_PATH = "C:\\Users\\DELL\\javaLibraryImages\\";
+    private static final String IMAGE_PATH = "\\C:\\Users\\DELL\\javaLibraryImages\\";
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

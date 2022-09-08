@@ -22,7 +22,7 @@ import java.io.IOException;
 )
 public class AddUserServlet extends HttpServlet {
 
-    private static final String IMAGE_PATH = "C:\\Users\\DELL\\javaLibraryImages\\";
+    private static final String IMAGE_PATH = "\\C:\\Users\\DELL\\javaLibraryImages\\";
 
 
     UserManager userManager = new UserManager();

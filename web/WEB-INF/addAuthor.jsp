@@ -18,7 +18,7 @@ Please input author's data:
     <input type="email" name="email" placeholder="please input email">/><br>
     <input type="number" name="age" placeholder="please input age">
     Profile Picture
-    <input type="file" name="authorPic">
+    <input type="file" name="profilePic">
     <br>
     <input type="submit" value="Add">
 </form>

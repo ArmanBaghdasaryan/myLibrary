@@ -21,6 +21,7 @@
 
 <table border="1px">
     <tr>
+        <th>image</th>
         <th>id</th>
         <th>title</th>
         <th>description</th>
@@ -30,6 +31,14 @@
     </tr>
     <%for (Book book : books) {%>
     <tr>
+        <td>
+            <%--            <img src="/image/defaultPic.png" width="100">--%>
+            <% if (book.getProfilePic() == null || book.getProfilePic().length() == 0) { %>
+            <img src="/image/defaultPic.png" width="100"/>
+            <% } else { %>
+            <img src="/getImage?profilePic=<%=book.getProfilePic()%>" width="100"/>
+            <% } %>
+        </td>
         <td><%=book.getId()%>
         </td>
         <td><%=book.getTitle()%>

@@ -21,6 +21,7 @@
 Please update book's data:
 <form action="/book/edit" method="post">
     <input type="hidden" name="bookId" value="<%=book.getId()%>">
+    <input type="file" name="profilePic" value="<%=book.getProfilePic()%>">
     <input type="text" name="title" value="<%=book.getTitle()%>"/><br>
     <input type="text" name="description" value=" <%=book.getDescription()%>"/><br>
     <input type="text" name="price" value=" <%=book.getPrice()%>"/><br>

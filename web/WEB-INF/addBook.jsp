@@ -29,7 +29,7 @@ Please input book's:
         <% } %><br>
     </select>
     Profile Picture
-    <input type="file" name="bookPic">
+    <input type="file" name="profilePic">
     <br>
     <input type="submit" value="Add">
 </form>
