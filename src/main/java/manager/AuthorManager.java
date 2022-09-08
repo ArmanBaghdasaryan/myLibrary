@@ -13,13 +13,14 @@ public class AuthorManager {
 
 
     public void add(Author author) {
-        String sql = "insert into author(name,surname,email,age) VALUES (?,?,?,?)";
+        String sql = "insert into author(name,surname,email,age,author_pic) VALUES (?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, author.getName());
             ps.setString(2, author.getSurname());
             ps.setString(3, author.getEmail());
             ps.setInt(4, author.getAge());
+            ps.setString(5, author.getAuthorPic());
 
 
             ps.executeUpdate();
@@ -37,8 +38,8 @@ public class AuthorManager {
         String sql = "select * from author";
         List<Author> authors = new ArrayList<>();
         try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
                 authors.add(getAuthorFromResultSet(resultSet));
@@ -52,8 +53,8 @@ public class AuthorManager {
     public Author getById(int id) {
         String sql = "select * from author where id = " + id;
         try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
                 return getAuthorFromResultSet(resultSet);
@@ -72,6 +73,7 @@ public class AuthorManager {
                 .surname(resultSet.getString("surname"))
                 .email(resultSet.getString("email"))
                 .age(resultSet.getInt("age"))
+                .authorPic(resultSet.getString("author_pic"))
                 .build();
     }
 
@@ -87,14 +89,15 @@ public class AuthorManager {
     }
 
     public void edit(Author author) {
-        String sql = "update author set `name`= ?,surname = ?,email = ?,age = ? where id = ?";
+        String sql = "update author set `name`= ?,surname = ?,email = ?,age = ?,author_pic = ? where id = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, author.getName());
             ps.setString(2, author.getSurname());
             ps.setString(3, author.getEmail());
             ps.setInt(4, author.getAge());
-            ps.setInt(5, author.getId());
+            ps.setString(5, author.getAuthorPic());
+            ps.setInt(6, author.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

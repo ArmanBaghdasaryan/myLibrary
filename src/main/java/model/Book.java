@@ -10,10 +10,11 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class Book {
-    int id;
-    String title;
-    String description;
-    double price;
-    Author author;
+    private int id;
+    private String title;
+    private String description;
+    private double price;
+    private Author author;
+    private String bookPic;
 
 }
